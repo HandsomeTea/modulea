@@ -33,7 +33,7 @@ const render = (props?: { container: HTMLElement }) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     if (!instance) {
-        console.log('a render props', props);
+        console.log('a render props');
         instance = new Vue({
             router,
             store,
