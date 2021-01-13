@@ -5,10 +5,10 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [{
     path: '/',
-    redirect: '/index',
+    redirect: '/modulea',
     component: () => import(/* webpackChunkName: 'layout' */ '../views/layout/index.vue'),
     children: [{
-        path: '/index',
+        path: '/modulea',
         component: () => import(/* webpackChunkName: 'home' */ '../views/home.vue')
     }]
 }];
