@@ -16,9 +16,8 @@ module.exports = merge(common, {
     devtool: 'source-map',
     stats: 'errors-only',
     output: {
-        filename: 'javascript/[hash:20][id].js',
+        filename: isTestBuild ? 'javascript/[name].js' : 'javascript/[hash:20][id].js',
         publicPath: '/module/modulea/'
-        // filename: 'javascript/[name].js'
     },
     optimization: {
         concatenateModules: true
