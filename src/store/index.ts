@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
-import { RootState } from './stateModel';
+import { RootState, ModuleOperateType } from './stateModel';
 import user from './user';
 
 Vue.use(Vuex);
@@ -9,7 +9,8 @@ const state: RootState = {
     loginStatus: false,
     language: (window.navigator.language || 'zh').toLowerCase().split('-')[0],
     menuHidden: false,
-    screenType: ''
+    screenType: '',
+    moduleOperate: ''
 };
 const store: StoreOptions<RootState> = {
     modules: {
@@ -39,6 +40,11 @@ const store: StoreOptions<RootState> = {
                     state.menuHidden = true;
                 }
             }
+        },
+        _setModuleOperate(state: RootState, action: ModuleOperateType) {
+            if (state.moduleOperate !== action) {
+                state.moduleOperate = action;
+            }
         }
     },
     actions: {
@@ -66,6 +72,9 @@ const store: StoreOptions<RootState> = {
             } else if (size > 768) {
                 commit('_setScreenType', 'ipad');
             }
+        },
+        setModuleOperate({ commit }, action: ModuleOperateType) {
+            commit('_setModuleOperate', action);
         }
     }
 };
